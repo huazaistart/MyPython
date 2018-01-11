@@ -524,27 +524,28 @@ ps: `__metaclass__`是创建类时起作用.所以我们可以分别使用`__met
 
 **这个绝对常考啊.绝对要记住1~2个方法,当时面试官是让手写的.**
 
-补充:__new__方法
+补充:__new__方法：
 class Person(object):
-#     # 定义一个类属性保存实例对象
-#     __instance = None
-#     # 定义一个类属性，保存对象属性是否是第一次赋值或者实例化
-#     __is_first = True
-#     #监听person类创建对象
-#     def __new__(cls, *args, **kwargs):
-#         # 如果__instance没有值， 就代表没有使用这个类创建过对象
-#         if not cls.__instance:
-#             # print("因为没有值")
-#             cls.__instance = object.__new__(cls)
-#
-#         return cls.__instance
-#
-#     def __init__(self, name, age):
-#         if Person.__is_first:
-#             self.name = name
-#             self.age = age
-#             # 对__is_first重新赋值为False
-#             Person.__is_first = False
+     # 定义一个类属性保存实例对象
+     __instance = None
+     # 定义一个类属性，保存对象属性是否是第一次赋值或者实例化
+     __is_first = True
+     #监听person类创建对象
+     def __new__(cls, *args, **kwargs):
+         # 如果__instance没有值， 就代表没有使用这个类创建过对象
+         if not cls.__instance:
+             # print("因为没有值")
+             cls.__instance = object.__new__(cls)
+
+         return cls.__instance
+
+     def __init__(self, name, age):
+         if Person.__is_first:
+             self.name = name
+             self.age = age
+             # 对__is_first重新赋值为False
+             Person.__is_first = False
+
 
 ### 1 使用`__new__`方法
 
